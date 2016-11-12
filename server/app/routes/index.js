@@ -6,14 +6,15 @@ var connection = require('../../db');
 
 module.exports = router;
 
+// console.log('connection', connection);
 router.get('/', function (req, res, next) {
 	// I want to list all rows in the mySQL database
 	console.log('entered router');
-	console.log('connection is', connection);
-	// connection.query('SELECT *', function(err, rows, fields) {
-	// 	if (err) throw err;
-	// 	console.log('Database returned...', '\nrows:', rows, '\nfields:',fields);
-	// });
+	connection.query('SELECT * FROM submissionanalytics', function(err, rows, fields) {
+		if (err) throw err;
+		console.log('err is', err);
+		console.log('Database returned...', '\nfields[0]:', fields[0], '\nrows:', rows);
+	});
 });
 
 router.use(function (req, res) {

@@ -3,7 +3,6 @@
 
 var chalk = require('chalk');
 
-// TODO
 // Requires in ./db/index.js to connect to mySQL database
 var connection = require('./db');
 
@@ -25,20 +24,9 @@ var startServer = function () {
 
 };
 
-// var authenticateConnection = function () {
-// 	startDb
-//   .authenticate()
-//   .then(function(err) {
-//     console.log('Connection has been established successfully.');
-//   }, function (err) {
-//     console.log('Unable to connect to the database:', err);
-//   });
-// }
-
-try {
-	createApplication();
-	startServer();
-} catch (err) {
+Promise.resolve(createApplication)
+.then(startServer)
+.catch(function (err) {
     console.error(chalk.red(err.stack));
     process.exit(1);
-}
+});
