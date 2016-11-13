@@ -1,12 +1,28 @@
-<h1>at policy_result.html</h1>
-<!-- Use a table here? -->
-<!-- <table class="ui striped table">
+<h1>All policies</h1>
+<table class="ui striped table">
   <thead>
     <tr>
+      <th>Status</th>
+      <th>Agent</th>
       <th>Name</th>
-      <th>Date Joined</th>
-      <th>E-mail</th>
-      <th>Called</th>
+      <th>State</th>
+      <th>Underwriter</th>
+      <th>Operating unit</th>
+      <th>Quote premium</th>
+      <th>Quote premium band</th>
+      <th>Expiration date</th>
     </tr>
-  </thead> -->
-<policy-row ng-repeat="row in rows">{{row}}</policy-row>
+  </thead>
+  <tbody>
+    <tr ng-repeat= "row in rows">
+    	<td>{{row.Status}}</td>
+		  <td>{{row.AGENT_NAME}}</td>
+		  <td>{{row.INSURED_NAME}}</td>
+		  <td>{{row.INSURED_STATE}}</td>
+		  <td>{{row.UNDERWRITER_NAME}}</td>
+		  <td>{{row.OPERATING_UNIT_NAME}}</td>
+		  <td>{{row.QUOTED_PREMIUM}}</td>
+		  <td>{{row.QUOTED_PREMIUM_BAND}}</td>
+		  <td>{{row.POL_EXP_DT}}</td>
+  </tbody>
+</table>

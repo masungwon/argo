@@ -1,12 +1,26 @@
-<h1>at submission_to_review_result.html</h1>
-<!-- Use a table here? -->
-<!-- <table class="ui striped table">
+<h1>Submissions to review</h1>
+<table class="ui striped table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date Joined</th>
-      <th>E-mail</th>
-      <th>Called</th>
+      <th>Submission No.</th>
+      <th>Status</th>
+      <th>Agent</th>
+      <th>Insured</th>
+      <th>State</th>
+      <th>Underwriter</th>
+      <th>Operating unit</th>
+      <th>Date of submission</th>
     </tr>
-  </thead> -->
-<submission-row ng-repeat="row in rows">{{row}}</submission-row>
+  </thead>
+  <tbody>
+    <tr ng-repeat= "row in rows">
+    	<td>{{row.SUBMISSION_NO}}</td>
+		  <td>Need review</td>
+		  <td>{{row.AGENT_NAME}}</td>
+		  <td>{{row.INSURED_NAME}}</td>
+		  <td>{{row.INSURED_STATE}}</td>
+		  <td>{{row.UNDERWRITER_NAME}}</td>
+		  <td>{{row.OPERATING_UNIT_NAME}}</td>
+		  <td>{{row.submission_date}}</td>
+  </tbody>
+</table>

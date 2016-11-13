@@ -5,4 +5,3 @@ app.config(function ($stateProvider) {
     controller: 'SearchCtrl'
   });
 });
-
