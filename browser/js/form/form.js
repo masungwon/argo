@@ -17,7 +17,10 @@ app.controller('FormCtrl', function($scope, $state) {
         $state.go('submission_to_review_result', {type: type, underwriter: underwriter});
       }
       else if (type === '2') {
-      $state.go('policy_result', {type: type, underwriter: underwriter});
+        $state.go('policy_result', {type: type, underwriter: underwriter});
+      }
+      else if (type === '3') {
+        $state.go('rejected_quotes_result', {type: type, underwriter: underwriter});
       }
     } else {
       if (type === '1') {
@@ -25,6 +28,9 @@ app.controller('FormCtrl', function($scope, $state) {
       }
       else if (type === '2') {
         $state.go('policy_result', {type: type});
+      }
+      else if (type === '3') {
+        $state.go('rejected_quotes_result', {type: type});
       }
     }
   }

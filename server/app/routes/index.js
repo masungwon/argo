@@ -40,7 +40,8 @@ router.get('/policies', function (req, res, next) {
 });
 
 router.get('/rejectedByClients', function (req, res, next) {
-	var query = "SELECT UNDERWRITER_NAME, INSURED_NAME, SUB_REJECT_REASON, QUOTED_DATE, QUOTED_PREMIUM, QUOTED_PREMIUM_BAND, REJECTED_DATE, REJECT_REASON, INSURED_STATE FROM eagertobp.submissionanalytics WHERE 1=1 AND reject_after_quote_flag = 'Y'"
+	console.log('in rejectedByClients route (no underwriter)');
+	var query = "SELECT AGENT_NAME, UNDERWRITER_NAME, INSURED_NAME, SUB_REJECT_REASON, QUOTED_DATE, QUOTED_PREMIUM, QUOTED_PREMIUM_BAND, REJECTED_DATE, REJECT_REASON, INSURED_STATE FROM eagertobp.submissionanalytics WHERE 1=1 AND reject_after_quote_flag = 'Y'"
 	connection.query(query, function(err, rows, fields) {
 		if (err) throw err;
 		res.json(rows);
@@ -49,7 +50,7 @@ router.get('/rejectedByClients', function (req, res, next) {
 
 router.get('/rejectedByClients/:underwriter', function (req, res, next) {
 	var underwriter = req.params.underwriter.split('+').join(' ');
-	var query = "SELECT UNDERWRITER_NAME, INSURED_NAME, SUB_REJECT_REASON, QUOTED_DATE, QUOTED_PREMIUM, QUOTED_PREMIUM_BAND, REJECTED_DATE, REJECT_REASON, INSURED_STATE FROM eagertobp.submissionanalytics WHERE 1=1 AND reject_after_quote_flag = 'Y' AND UNDERWRITER_NAME = '" + underwriter +"'";
+	var query = "SELECT AGENT_NAME, UNDERWRITER_NAME, INSURED_NAME, SUB_REJECT_REASON, QUOTED_DATE, QUOTED_PREMIUM, QUOTED_PREMIUM_BAND, REJECTED_DATE, REJECT_REASON, INSURED_STATE FROM eagertobp.submissionanalytics WHERE 1=1 AND reject_after_quote_flag = 'Y' AND UNDERWRITER_NAME = '" + underwriter +"'";
 	connection.query(query, function(err, rows, fields) {
 		if (err) throw err;
 		res.json(rows);

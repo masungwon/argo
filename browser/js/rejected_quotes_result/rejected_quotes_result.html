@@ -1,31 +1,30 @@
-<h1>All policies</h1>
+<h1>All quotes rejected by potential clients</h1>
 <h2>Underwriter: {{underwriter}}</h2>
 <table class="ui striped table">
   <thead>
     <tr>
-      <th>Status</th>
+      <th>Insured name</th>
       <th>Agent</th>
-      <th>Name</th>
+      <th>Quoted premium</th>
+      <th>Quoted premium band</th>
+      <th>Reject reason</th>
+      <th>Quoted date</th>
+      <th>Rejected date</th>
       <th>State</th>
       <th>Underwriter</th>
-      <th>Operating unit</th>
-      <th>Quote premium</th>
-      <th>Quote premium band</th>
-      <th>Expiration date</th>
     </tr>
   </thead>
   <tbody>
-    <!-- loader directive here -->
     <tr ng-repeat= "row in rows">
-    	<td>{{row.Status}}</td>
+    	<td>{{row.INSURED_NAME}}</td>
 		  <td>{{row.AGENT_NAME}}</td>
-		  <td>{{row.INSURED_NAME}}</td>
-		  <td>{{row.INSURED_STATE}}</td>
-		  <td>{{row.UNDERWRITER_NAME}}</td>
-		  <td>{{row.OPERATING_UNIT_NAME}}</td>
 		  <td>{{row.QUOTED_PREMIUM}}</td>
 		  <td>{{row.QUOTED_PREMIUM_BAND}}</td>
-		  <td>{{row.POL_EXP_DT}}</td>
+		  <td>{{row.SUB_REJECT_REASON}}</td>
+		  <td>{{row.QUOTED_DATE}}</td>
+		  <td>{{row.REJECTED_DATE}}</td>
+		  <td>{{row.INSURED_STATE}}</td>
+		  <td>{{row.UNDERWRITER_NAME}}</td>
   </tbody>
 </table>
 <div ng-show="rows===[]">

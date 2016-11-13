@@ -1,3 +1,5 @@
+'use strict';
+
 app.config(function ($stateProvider) {
   $stateProvider.state('policy_result', {
     url: '/policy_result/:type/:underwriter',
@@ -20,6 +22,11 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			.then(function(rows) {
 				$scope.rows = rows;
 			})
+		} else if ($stateParams.type === '3') {
+			SearchFactory.findRejectedQuotes(underwriter)
+			.then(function(rows) {
+				$scope.rows = rows;
+			})
 		}
 	} else {
 			$scope.underwriter = 'All underwriters';
@@ -31,6 +38,11 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies()
 			.then(function(rows) {
+				$scope.rows = rows;
+			})
+		} else if ($stateParams.type === '3') {
+			SearchFactory.findRejectedQuotes()
+			.then(function (rows) {
 				$scope.rows = rows;
 			})
 		}
@@ -68,12 +80,19 @@ app.factory('SearchFactory', function($http) {
 		}
 	}
 
-	// SearchFactory.getAll = function() {
-	// 	return $http.get('/api/')
-	// 	.then(function(response) {
-	// 		return response.data;
-	// 	});
-	// };
+	SearchFactory.findRejectedQuotes = function(underwriter) {
+		if (!underwriter) {
+			return $http.get('/api/rejectedByClients')
+				.then(function(response) {
+					return response.data;
+			});
+		} else {
+		return $http.get('/api/rejectedByClients/' + underwriter)
+			.then(function(response) {
+				return response.data;
+			});
+		}
+	};
 
  	return SearchFactory;
 });
