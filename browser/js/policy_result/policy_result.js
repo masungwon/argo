@@ -1,7 +1,7 @@
 app.config(function ($stateProvider) {
-  $stateProvider.state('search_result', {
-    url: '/search_result/:type',
-    templateUrl: 'js/search_result/search_result.html',
+  $stateProvider.state('policy_result', {
+    url: '/policy_result/:type',
+    templateUrl: 'js/policy_result/policy_result.html',
     controller: 'SearchCtrl'
   });
 });
@@ -13,14 +13,12 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		type = 'submissionsToReview';
 		SearchFactory.findSubmissionsToReview()
 		.then(function(rows) {
-			console.log('row', rows[0]);
 			$scope.rows = rows;
 		})
 	} else if ($stateParams.type === '2') {
 		type = 'policies';
 		SearchFactory.findPolicies()
 		.then(function(rows) {
-			console.log('row', rows[0]);
 			$scope.rows = rows;
 		})
 	}

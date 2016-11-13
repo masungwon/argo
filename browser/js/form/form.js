@@ -7,8 +7,12 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('FormCtrl', function($scope, $state) {
-  // how to know if something is selected?
   $scope.search = function(type) {
-    $state.go('search_result', {type: type});
+    if (type === '1') {
+      $state.go('submission_to_review_result', {type: type});
+    }
+    else if (type === '2') {
+      $state.go('policy_result', {type: type});
+    }
   }
 });
