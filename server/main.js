@@ -24,7 +24,7 @@ var startServer = function () {
 
 };
 
-Promise.resolve(createApplication)
+Promise.resolve(createApplication())
 .then(startServer)
 .catch(function (err) {
     console.error(chalk.red(err.stack));
