@@ -7,40 +7,65 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactory) {
-	var underwriter = $stateParams.underwriter;
-	$scope.underwriter = underwriter.split('+').join(' ');
-	if ($stateParams.type === '1') {
-		type = 'submissionsToReview';
-		SearchFactory.findSubmissionsToReview(underwriter)
-		.then(function(rows) {
-			$scope.rows = rows;
-		})
-	} else if ($stateParams.type === '2') {
-		SearchFactory.findPolicies(underwriter)
-		.then(function(rows) {
-			$scope.rows = rows;
-		})
+	if ($stateParams.underwriter) {
+		var underwriter = $stateParams.underwriter;
+		$scope.underwriter = underwriter.split('+').join(' ');
+		if ($stateParams.type === '1') {
+			SearchFactory.findSubmissionsToReview(underwriter)
+			.then(function(rows) {
+				$scope.rows = rows;
+			})
+		} else if ($stateParams.type === '2') {
+			SearchFactory.findPolicies(underwriter)
+			.then(function(rows) {
+				$scope.rows = rows;
+			})
+		}
+	} else {
+			$scope.underwriter = 'All underwriters';
+			if ($stateParams.type === '1') {
+			SearchFactory.findSubmissionsToReview()
+			.then(function(rows) {
+				$scope.rows = rows;
+			})
+		} else if ($stateParams.type === '2') {
+			SearchFactory.findPolicies()
+			.then(function(rows) {
+				$scope.rows = rows;
+			})
+		}
 	}
 });
 
 app.factory('SearchFactory', function($http) {
 	var SearchFactory = {};
 
-	//
 	SearchFactory.findSubmissionsToReview = function(underwriter) {
-		console.log('2) in SearchFactory; underwriter:', underwriter);
-		return $http.get('/api/submissionsToReview/' + underwriter)
-			.then(function(response) {
-				return response.data;
-			});
+		if (!underwriter) {
+			return $http.get('/api/submissionsToReview/')
+				.then(function(response) {
+					return response.data;
+				});
+		} else {
+			return $http.get('/api/submissionsToReview/' + underwriter)
+				.then(function(response) {
+					return response.data;
+				});
+		}
 	}
 
-	SearchFactory.findPolicies = function() {
-		console.log('in SearchFactory; underwriter:', underwriter);
-		return $http.get('/api/policies/:underwriter' + underwriter)
+	SearchFactory.findPolicies = function(underwriter) {
+		if (!underwriter) {
+			return $http.get('/api/policies')
+				.then(function(response) {
+					return response.data;
+			});
+		} else {
+		return $http.get('/api/policies/' + underwriter)
 			.then(function(response) {
 				return response.data;
 			});
+		}
 	}
 
 	// SearchFactory.getAll = function() {
