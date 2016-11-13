@@ -3,26 +3,42 @@
     <h4 class="ui dividing header">Types of entries you'd like to view</h4>
 		<form class="ui form">
 		
-			<div class="ui checkbox">
-    		<input id="submissions" type="checkbox">
+			<label>
+	        <input type="radio" ng-model="type" value="1">Submissions to be reviewed</input>
+	    </label>
+	    <label>
+	        <input type="radio" ng-model="type" value="2">Policies</input>
+	    </label>
+<!-- 	    <label>
+	        <input type="radio" ng-model="type" value="3">3</input>
+	    </label>
+	    <label>
+	        <input type="radio" ng-model="type" value="4">4</input>
+	    </label>
+	    <label>
+	        <input type="radio" ng-model="type" value="5">5</input>
+	    </label>
+ -->
+		<!-- 	<div class="ui checkbox" ng-model=type>
+    		<input id="submissions" type="checkbox" value="submissions">
     		<label for="submissions">Submissions to be reviewed</label>
   		</div></br>
 			<div class="ui checkbox">
-    		<input id="policies" type="checkbox">
+    		<input id="policies" type="checkbox" value="policies">
     		<label for="policies">Policies</label>
   		</div></br>
   		<div class="ui checkbox">
-  		  <input id="quotes_getting_reviewed" type="checkbox">
+  		  <input id="quotes_getting_reviewed" type="checkbox" value="quotes_getting_reviewed">
     		<label for="quotes_getting_reviewed">Quotes clients are reviewing</label>
   		</div></br>
   		<div class="ui checkbox">
-    		<input id="quotes_client_reject" type="checkbox">
+    		<input id="quotes_client_reject" type="checkbox" value="quotes_client_reject">
     		<label for="quotes_client_reject">Quotes rejected by clients</label>
   		</div></br>
     	<div class="ui checkbox">
-    		<input id="submissions_underwriter_reject" type="checkbox">
+    		<input id="submissions_underwriter_reject" type="checkbox" value="submissions_underwriter_reject">
     		<label for="submissions_underwriter_reject">Submissions rejected by underwriters</label>
-  		</div>
+  		</div> -->
 
 		  <h4 class="ui dividing header">More details (optional)</h4>
 		  <div class="field">
@@ -115,7 +131,7 @@
 		      </select>
 		    </div>
 		  </div>
-		  <center><div class="ui button" tabindex="0" ng-click="search()">Search</div></center>
+		  <center><div class="ui button" tabindex="0" ng-click="search(type)">Search</div></center>
 		</form>
   </div>
 </div>

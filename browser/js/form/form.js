@@ -6,15 +6,9 @@ app.config(function ($stateProvider) {
   });
 });
 
-app.controller('FormCtrl', function($scope, $state, FormFactory) {
-  $scope.search = function() {
-    $state.go('search_result');
-  }
-});
-
-app.factory('FormFactory', function() {
-  return {
-    
-
+app.controller('FormCtrl', function($scope, $state) {
+  // how to know if something is selected?
+  $scope.search = function(type) {
+    $state.go('search_result', {type: type});
   }
 });
