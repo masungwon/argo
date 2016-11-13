@@ -1,11 +1,18 @@
 <div ng-controller="FormCtrl" layout="column">
   <div flex></br>
+  	<div class="field">
+	  	<div class="two fields">
+			<div class="field">
+				<label>Underwriter name</label></br>
+				<input type="text" name="underwriter_name" ng-model="underwriter" placeholder="ex: Katie Adler">
+		</div>
+	</div>
     <h4 class="ui dividing header">Types of entries you'd like to view</h4>
 		<form class="ui form">
 		
 			<label>
-	        <input type="radio" ng-model="type" value="1">Submissions to be reviewed</input>
-	    </label>
+	        <input type="radio" ng-model="type" value="1">Submissions to review</input>
+	    </label></br>
 	    <label>
 	        <input type="radio" ng-model="type" value="2">Policies</input>
 	    </label>

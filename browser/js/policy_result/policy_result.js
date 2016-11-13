@@ -1,23 +1,22 @@
 app.config(function ($stateProvider) {
   $stateProvider.state('policy_result', {
-    url: '/policy_result/:type',
+    url: '/policy_result/:type/:underwriter',
     templateUrl: 'js/policy_result/policy_result.html',
     controller: 'SearchCtrl'
   });
 });
 
 app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactory) {
-	
-	var type;
+	var underwriter = $stateParams.underwriter;
+	$scope.underwriter = underwriter.split('+').join(' ');
 	if ($stateParams.type === '1') {
 		type = 'submissionsToReview';
-		SearchFactory.findSubmissionsToReview()
+		SearchFactory.findSubmissionsToReview(underwriter)
 		.then(function(rows) {
 			$scope.rows = rows;
 		})
 	} else if ($stateParams.type === '2') {
-		type = 'policies';
-		SearchFactory.findPolicies()
+		SearchFactory.findPolicies(underwriter)
 		.then(function(rows) {
 			$scope.rows = rows;
 		})
@@ -27,15 +26,18 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 app.factory('SearchFactory', function($http) {
 	var SearchFactory = {};
 
-	SearchFactory.findSubmissionsToReview = function() {
-		return $http.get('/api/submissionsToReview')
+	//
+	SearchFactory.findSubmissionsToReview = function(underwriter) {
+		console.log('2) in SearchFactory; underwriter:', underwriter);
+		return $http.get('/api/submissionsToReview/' + underwriter)
 			.then(function(response) {
 				return response.data;
 			});
 	}
 
 	SearchFactory.findPolicies = function() {
-		return $http.get('/api/policies')
+		console.log('in SearchFactory; underwriter:', underwriter);
+		return $http.get('/api/policies/:underwriter' + underwriter)
 			.then(function(response) {
 				return response.data;
 			});
