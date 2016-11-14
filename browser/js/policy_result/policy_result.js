@@ -44,6 +44,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '4') {
 			SearchFactory.findPendingQuotes(underwriter)
 			.then(function(rows) {
+				console.log('rows', rows);
 				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
@@ -84,7 +85,6 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			SearchFactory.findPendingQuotes()
 			.then(function(rows) {
 				if(rows.length === 0) {
-					console.log('this should print');
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -146,7 +146,7 @@ app.factory('SearchFactory', function($http) {
 					return response.data;
 			});
 		} else {
-		return $http.get('/api/pendingQuoted' + underwriter)
+		return $http.get('/api/pendingQuoted/' + underwriter)
 			.then(function(response) {
 				return response.data;
 			});
