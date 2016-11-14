@@ -5,5 +5,7 @@ A web application that allows underwriters to easily navigate an insurance datab
 ## Installation
 
 1. Run `npm install`
-2. Run `npm start`
-3. Open up the browser to http://localhost:1337/
+2. Run `cd semantic/`
+3. run `gulp build` (You may have to run `npm install -g gulp` beforehand)
+4. Run `npm start`
+5. Open up the browser to http://localhost:1337/
