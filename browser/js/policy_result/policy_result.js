@@ -9,6 +9,8 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactory) {
+	$scope.found = false;
+	// $scope.rows = [];
 	if ($stateParams.underwriter) {
 		var underwriter = $stateParams.underwriter;
 		$scope.underwriter = underwriter.split('+').join(' ');
@@ -16,16 +18,25 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			SearchFactory.findSubmissionsToReview(underwriter)
 			.then(function(rows) {
 				$scope.rows = rows;
+				$scope.found = true;
 			})
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies(underwriter)
 			.then(function(rows) {
 				$scope.rows = rows;
+				$scope.found = true;
 			})
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes(underwriter)
 			.then(function(rows) {
 				$scope.rows = rows;
+				$scope.found = true;
+			})
+		} else if ($stateParams.type === '4') {
+			SearchFactory.findPendingQuotes(underwriter)
+			.then(function(rows) {
+				$scope.rows = rows;
+				$scope.found = true;
 			})
 		}
 	} else {
@@ -34,16 +45,26 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			SearchFactory.findSubmissionsToReview()
 			.then(function(rows) {
 				$scope.rows = rows;
+				$scope.found = true;
 			})
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies()
 			.then(function(rows) {
 				$scope.rows = rows;
+				$scope.found = true;
 			})
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes()
 			.then(function (rows) {
 				$scope.rows = rows;
+				$scope.found = true;
+			})
+		} else if ($stateParams.type === '4') {
+			SearchFactory.findPendingQuotes()
+			.then(function(rows) {
+				console.log('got rows; rows', rows);
+				$scope.rows = rows;
+				$scope.found = true;
 			})
 		}
 	}
@@ -55,14 +76,14 @@ app.factory('SearchFactory', function($http) {
 	SearchFactory.findSubmissionsToReview = function(underwriter) {
 		if (!underwriter) {
 			return $http.get('/api/submissionsToReview/')
-				.then(function(response) {
-					return response.data;
-				});
+			.then(function(response) {
+				return response.data;
+			});
 		} else {
 			return $http.get('/api/submissionsToReview/' + underwriter)
-				.then(function(response) {
-					return response.data;
-				});
+			.then(function(response) {
+				return response.data;
+			});
 		}
 	}
 
@@ -94,5 +115,18 @@ app.factory('SearchFactory', function($http) {
 		}
 	};
 
+	SearchFactory.findPendingQuotes = function (underwriter) {
+		if (!underwriter) {
+			return $http.get('/api/pendingQuoted')
+				.then(function(response) {
+					return response.data;
+			});
+		} else {
+		return $http.get('/api/pendingQuoted' + underwriter)
+			.then(function(response) {
+				return response.data;
+			});
+		}
+	}
  	return SearchFactory;
 });

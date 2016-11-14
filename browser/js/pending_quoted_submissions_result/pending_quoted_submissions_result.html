@@ -1,32 +1,29 @@
-<h1>All policies</h1>
+<h1>Pending quoted submissions to be answered by clients</h1>
 <h2>Underwriter: {{underwriter}}</h2>
 <table class="ui striped table">
   <thead>
     <tr>
-      <th>Status</th>
-      <th>Agent</th>
+      <th>Submission date</th>
+      <th>Quoted date</th>
       <th>Name</th>
+      <th>Agent</th>
+      <th>Quoted premium</th>
+      <th>Quoted premium band</th>
       <th>State</th>
       <th>Underwriter</th>
-      <th>Operating unit</th>
-      <th>Quote premium</th>
-      <th>Quote premium band</th>
-      <th>Expiration date</th>
     </tr>
   </thead>
   <tbody>
     <loader ng-show="!found"></loader>
       <tr ng-repeat= "row in rows">
-      	<td>{{row.Status}}</td>
-  		  <td>{{row.AGENT_NAME}}</td>
+      	<td>{{row.submission_date}}</td>
+  		  <td>{{row.QUOTED_DATE}}</td>
   		  <td>{{row.INSURED_NAME}}</td>
-  		  <td>{{row.INSURED_STATE}}</td>
-  		  <td>{{row.UNDERWRITER_NAME}}</td>
-  		  <td>{{row.OPERATING_UNIT_NAME}}</td>
+  		  <td>{{row.AGENT_NAME}}</td>
   		  <td>{{row.QUOTED_PREMIUM}}</td>
   		  <td>{{row.QUOTED_PREMIUM_BAND}}</td>
-  		  <td>{{row.POL_EXP_DT}}</td>
-    </div>
+  		  <td>{{row.INSURED_STATE}}</td>
+  		  <td>{{row.UNDERWRITER}}</td>
   </tbody>
 </table>
 <div ng-show="found && !(rows===[])">

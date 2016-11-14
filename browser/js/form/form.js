@@ -21,6 +21,8 @@ app.controller('FormCtrl', function($scope, $state) {
       }
       else if (type === '3') {
         $state.go('rejected_quotes_result', {type: type, underwriter: underwriter});
+      } else if (type === '4') {
+        $state.go('pending_quoted_submissions_result', {type: type, underwriter: underwriter});
       }
     } else {
       if (type === '1') {
@@ -31,6 +33,8 @@ app.controller('FormCtrl', function($scope, $state) {
       }
       else if (type === '3') {
         $state.go('rejected_quotes_result', {type: type});
+      } else if (type === '4') {
+        $state.go('pending_quoted_submissions_result', {type: type});
       }
     }
   }

@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <loader ng-show="!rows"></loader>
+    <loader ng-show="!found"></loader>
     <tr ng-repeat= "row in rows">
     	<td>{{row.INSURED_NAME}}</td>
 		  <td>{{row.AGENT_NAME}}</td>
@@ -28,7 +28,7 @@
 		  <td>{{row.UNDERWRITER_NAME}}</td>
   </tbody>
 </table>
-<div ng-show="rows===[]">
+<div ng-show="found && !(rows===[])">
   <center><h2>No data entry found</h2></center></br>
   <center><button class="ui orange button" ui-sref="form">Make a new search</button></center>
 </div>
