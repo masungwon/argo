@@ -15,6 +15,7 @@
     </tr>
   </thead>
   <tbody>
+    <loader ng-show="!rows"></loader>
     <tr ng-repeat= "row in rows">
     	<td>{{row.INSURED_NAME}}</td>
 		  <td>{{row.AGENT_NAME}}</td>

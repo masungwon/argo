@@ -1,6 +1,6 @@
 'use strict';
 
-window.app = angular.module('argo', ['ui.router', 'ngMaterial']);
+window.app = angular.module('argo', ['ui.router', 'infinite-scroll', 'ngMaterial']);
 
 // This app.run is for listening to errors broadcasted by ui-router, usually originating from resolves
 app.config(function ($urlRouterProvider, $locationProvider) {

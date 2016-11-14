@@ -15,17 +15,18 @@
     </tr>
   </thead>
   <tbody>
-    <!-- loader directive here -->
-    <tr ng-repeat= "row in rows">
-    	<td>{{row.Status}}</td>
-		  <td>{{row.AGENT_NAME}}</td>
-		  <td>{{row.INSURED_NAME}}</td>
-		  <td>{{row.INSURED_STATE}}</td>
-		  <td>{{row.UNDERWRITER_NAME}}</td>
-		  <td>{{row.OPERATING_UNIT_NAME}}</td>
-		  <td>{{row.QUOTED_PREMIUM}}</td>
-		  <td>{{row.QUOTED_PREMIUM_BAND}}</td>
-		  <td>{{row.POL_EXP_DT}}</td>
+    <loader ng-show="!rows"></loader>
+      <tr ng-repeat= "row in rows">
+      	<td>{{row.Status}}</td>
+  		  <td>{{row.AGENT_NAME}}</td>
+  		  <td>{{row.INSURED_NAME}}</td>
+  		  <td>{{row.INSURED_STATE}}</td>
+  		  <td>{{row.UNDERWRITER_NAME}}</td>
+  		  <td>{{row.OPERATING_UNIT_NAME}}</td>
+  		  <td>{{row.QUOTED_PREMIUM}}</td>
+  		  <td>{{row.QUOTED_PREMIUM_BAND}}</td>
+  		  <td>{{row.POL_EXP_DT}}</td>
+    </div>
   </tbody>
 </table>
 <div ng-show="rows===[]">

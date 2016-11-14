@@ -14,12 +14,14 @@
     <script src="/angular-ui-router/release/angular-ui-router.js"></script>
     <link rel="stylesheet" type="text/css" href="dist/semantic.min.css">
 		<script src="dist/semantic.min.js"></script>
+    <script src='/ng-infinite-scroll/build/ng-infinite-scroll.min.js'></script>
     <script src="/js/app.js"></script>
     <script src="/js/sidebar/sidebar.directive.js"></script>
     <script src="/js/form/form.js"></script>
     <script src="/js/policy_result/policy_result.js"></script>
     <script src="/js/submission_to_review_result/submission_to_review_result.js"></script>
     <script src="/js/rejected_quotes_result/rejected_quotes_result.js"></script>
+    <script src="/js/loader/loader.js"></script>
 	</head>
 
 	<body ng-app="argo" layout="column">
@@ -28,11 +30,6 @@
       <center><button class="ui teal button" ui-sref="form">Start</button></center></br>
       <ui-view></ui-view>
   	</div>
-<!--   	<div class='col-xs-2'>
-  		<sidebar></sidebar>
-  	</div> -->
-
-    	<!-- <div id="main" ui-view></div> -->
 	</body>
 </html>
  
