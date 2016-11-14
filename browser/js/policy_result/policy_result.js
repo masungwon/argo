@@ -10,31 +10,43 @@ app.config(function ($stateProvider) {
 
 app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactory) {
 	$scope.found = false;
-	// $scope.rows = [];
+	$scope.noEntryFound = false;
 	if ($stateParams.underwriter) {
 		var underwriter = $stateParams.underwriter;
 		$scope.underwriter = underwriter.split('+').join(' ');
 		if ($stateParams.type === '1') {
 			SearchFactory.findSubmissionsToReview(underwriter)
 			.then(function(rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies(underwriter)
 			.then(function(rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes(underwriter)
 			.then(function(rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '4') {
 			SearchFactory.findPendingQuotes(underwriter)
 			.then(function(rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
@@ -44,25 +56,36 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			if ($stateParams.type === '1') {
 			SearchFactory.findSubmissionsToReview()
 			.then(function(rows) {
+				if (!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies()
 			.then(function(rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes()
 			.then(function (rows) {
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
 		} else if ($stateParams.type === '4') {
 			SearchFactory.findPendingQuotes()
 			.then(function(rows) {
-				console.log('got rows; rows', rows);
+				if(!rows) {
+					$scope.noEntryFound = true;
+				}
 				$scope.rows = rows;
 				$scope.found = true;
 			})
