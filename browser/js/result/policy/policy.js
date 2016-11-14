@@ -1,9 +1,9 @@
 'use strict';
 
 app.config(function ($stateProvider) {
-  $stateProvider.state('policy_result', {
-    url: '/policy_result/:type/:underwriter',
-    templateUrl: 'js/policy_result/policy_result.html',
+  $stateProvider.state('policy', {
+    url: '/policy/:type/:underwriter',
+    templateUrl: 'js/result/policy/policy.html',
     controller: 'SearchCtrl'
   });
 });

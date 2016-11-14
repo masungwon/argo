@@ -14,27 +14,27 @@ app.controller('FormCtrl', function($scope, $state) {
     if($scope.underwriter) {
       underwriter = ($scope.underwriter).split(' ').join('+');
       if (type === '1') {
-        $state.go('submission_to_review_result', {type: type, underwriter: underwriter});
+        $state.go('submission_to_review', {type: type, underwriter: underwriter});
       }
       else if (type === '2') {
-        $state.go('policy_result', {type: type, underwriter: underwriter});
+        $state.go('policy', {type: type, underwriter: underwriter});
       }
       else if (type === '3') {
-        $state.go('rejected_quotes_result', {type: type, underwriter: underwriter});
+        $state.go('rejected_quotes', {type: type, underwriter: underwriter});
       } else if (type === '4') {
-        $state.go('pending_quoted_submissions_result', {type: type, underwriter: underwriter});
+        $state.go('pending_quoted_submissions', {type: type, underwriter: underwriter});
       }
     } else {
       if (type === '1') {
-        $state.go('submission_to_review_result', {type: type});
+        $state.go('submission_to_review', {type: type});
       }
       else if (type === '2') {
-        $state.go('policy_result', {type: type});
+        $state.go('policy', {type: type});
       }
       else if (type === '3') {
-        $state.go('rejected_quotes_result', {type: type});
+        $state.go('rejected_quotes', {type: type});
       } else if (type === '4') {
-        $state.go('pending_quoted_submissions_result', {type: type});
+        $state.go('pending_quoted_submissions', {type: type});
       }
     }
   }

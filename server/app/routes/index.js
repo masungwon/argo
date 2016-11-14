@@ -76,6 +76,3 @@ router.get('/pendingQuoted/:underwriter', function (req, res, next) {
 router.use(function (req, res) {
   res.status(404).end();
 });
-
-
-
