@@ -17,7 +17,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		if ($stateParams.type === '1') {
 			SearchFactory.findSubmissionsToReview(underwriter)
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -26,7 +26,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies(underwriter)
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -35,7 +35,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes(underwriter)
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -44,7 +44,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '4') {
 			SearchFactory.findPendingQuotes(underwriter)
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -56,7 +56,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 			if ($stateParams.type === '1') {
 			SearchFactory.findSubmissionsToReview()
 			.then(function(rows) {
-				if (!rows) {
+				if (rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -65,7 +65,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '2') {
 			SearchFactory.findPolicies()
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -74,7 +74,7 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '3') {
 			SearchFactory.findRejectedQuotes()
 			.then(function (rows) {
-				if(!rows) {
+				if(rows.length === 0) {
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
@@ -83,7 +83,8 @@ app.controller('SearchCtrl', function($scope, $state, $stateParams, SearchFactor
 		} else if ($stateParams.type === '4') {
 			SearchFactory.findPendingQuotes()
 			.then(function(rows) {
-				if(!rows) {
+				if(rows.length === 0) {
+					console.log('this should print');
 					$scope.noEntryFound = true;
 				}
 				$scope.rows = rows;
