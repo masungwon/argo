@@ -1,4 +1,4 @@
-## Argo Digital
+## Argo
 
 A web application that allows underwriters to easily navigate an insurance database (MySQL). Built with JavaScript/Node, Angular, AngularUI Router, Express, SQL, Node-MySQL, Bluebird, and Semantic UI.
 
