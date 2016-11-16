@@ -2,7 +2,7 @@
 
 app.config(function ($stateProvider) {
   $stateProvider.state('form', {
-    url: '/form',
+    url: '/',
     templateUrl: 'js/form/form.html',
     controller: 'FormCtrl'
   });
